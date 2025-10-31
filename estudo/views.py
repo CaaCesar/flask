@@ -25,7 +25,18 @@ def contato():
 
     return render_template('contato.html', context=context, form=form)
 
+@app.route('/contato/lista')
+def contatolista():
+    
+    if request.method =='GET':
+        pesquisa = request.args.get('pesquisa', '')
 
+    dados = Contato.query.order_by('nome')
+    if pesquisa != '':
+        dados = dados.filter(Contato.nome.ilike(f'%{pesquisa}%'))
+    print(dados.all())
+    context = {'dados': dados.all()}
+    return render_template('contato_lista.html', context=context)
 
 
 
