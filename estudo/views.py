@@ -14,7 +14,7 @@ def homepage():
     return render_template('index.html', context=context)
 
 
-@app.route('/nova/', methods=['GET', 'POST'])
+@app.route('/newcontact/', methods=['GET', 'POST'])
 def contato():
     form = ContatoForm()
     context = {}
@@ -41,7 +41,7 @@ def contatolista():
 
 
 # Formato não recomendado de lidar com formulários
-@app.route('/nova/', methods=['GET', 'POST'])
+@app.route('/antigo/', methods=['GET', 'POST'])
 def contatoold():
     context = {}
     if request.method == 'GET':

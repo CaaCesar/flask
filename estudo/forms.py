@@ -3,6 +3,7 @@ from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired, Email
 from estudo.models import Contato
 from estudo import db
+
 class ContatoForm(FlaskForm):
     nome = StringField('Nome', validators=[DataRequired()])
     email = StringField('E-mail', validators=[DataRequired(), Email()])
