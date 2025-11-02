@@ -1,6 +1,5 @@
 from estudo import app
 from flask import render_template, url_for, request, redirect
-
 from estudo.models import Contato
 from estudo.forms import ContatoForm
 from estudo import db
