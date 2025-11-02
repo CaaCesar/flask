@@ -32,12 +32,20 @@
                         </tr>
                     </thead>
                     <tbody>
+                        {% for linha in context['dados'] %}
                         <tr>
-                            <td>{{ context['dados'][0].nome }}</td>
-                            <td>{{ context['dados'][0].email }}</td>
-                            <td>{{ context['dados'][0].assunto }}</td>
-                            <td>{{ context['dados'][0].respondido }}</td>
+                            <td>{{linha.nome}}</td>
+                            <td>{{linha.email}}</td>
+                            <td>{{linha.assunto}}</td>
+                            <td>
+                                {% if linha.respondido == 0 %}
+                                    Não
+                                {% else %}
+                                    Sim
+                                {% endif %}
+                            </td>
                         </tr>
+                        {% endfor%}
                     </tbody>
                 </table>
             </div>
