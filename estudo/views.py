@@ -8,8 +8,8 @@ from estudo import db
 @app.route('/')
 def homepage():
     context ={
-        'usuario': 'Usuario',
-        'idade': 25,
+        'usuario': 'Caio Cesar',
+        'idade': 23,
     }
     return render_template('index.html', context=context)
 
@@ -36,7 +36,7 @@ def contatolista():
     if pesquisa != '':
         dados = dados.filter(Contato.nome.ilike(f'%{pesquisa}%'))
     
-    print(dados.all())
+    
     context = {'dados': dados.all()}
 
     return render_template('contato_lista.html', context=context)
