@@ -2,8 +2,8 @@
 
 {% block content%}
     
-    {% include 'nav.html'%}
-    <div class="container">
+<div class="container">
+        {% include 'nav.html'%}
         <h1>Lista de Contatos</h1>
         
         <div class="col-12">
@@ -22,6 +22,7 @@
                         <th>E-Mail</th>
                         <th>Assunto</th>
                         <th>Respondido?</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -37,6 +38,7 @@
                                 Sim
                             {% endif %}
                         </td>
+                        <td><a href="{{ url_for('contato_detail', id=linha.id)}}"><img src="{{ url_for('static', filename='img/img_seta.png') }}" style="width: 40px;"></a></td>
                     </tr>
                     {% endfor%}
                 </tbody>

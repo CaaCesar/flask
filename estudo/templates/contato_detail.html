@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container text-center">
+    
+{% include 'nav.html' %}
+
+    <div class="col-6 mx-auto p-2 text-start d-flex flex-column align-items-center">
+        <h1>Contato:</h1><hr>
+        
+        <div class="card-detail d-flex justify-content-center  p-5 gap-5 rounded-3" style="border: 1px solid #066C80; background-color: #066C80; box-shadow: 5px 10px 20px #0CACCF;">
+            <section class="card-nome d-flex flex-column col-4 pb-3 me-4">
+                <p class="display-3">{{ obj.nome}}</p>
+                <p class="h6">{{ obj.email}}</p>
+                <img src="{{ url_for('static', filename='img/Placeholder_logo_img.jpg') }}" style="width: auto; height: auto; border-radius: 25%;">
+            </section>
+            <section class="card-user col-7">
+                <h3>Assunto:</h3>
+                <input type="text" value="{{ obj.assunto }}" class="form-control bg-dark text-white" readonly></input>
+                <h3>Mensagem:</h3>
+                <textarea type="text" rows="10"  class="form-control bg-dark text-white" readonly>{{obj.mensagem}}</textarea>
+                
+            </section>
+            
+        </div>
+        
+    </div>
+</div>
+{% endblock %}

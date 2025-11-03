@@ -13,7 +13,7 @@ def homepage():
     return render_template('index.html', context=context)
 
 
-@app.route('/newcontact/', methods=['GET', 'POST'])
+@app.route('/contato/', methods=['GET', 'POST'])
 def contato():
     form = ContatoForm()
     context = {}
@@ -30,7 +30,7 @@ def contatolista():
     if request.method =='GET':
         pesquisa = request.args.get('pesquisa', '')
 
-    dados = Contato.query.order_by('nome')
+    dados = Contato.query.order_by('id')
     
     if pesquisa != '':
         dados = dados.filter(Contato.nome.ilike(f'%{pesquisa}%'))
@@ -39,6 +39,13 @@ def contatolista():
     context = {'dados': dados.all()}
 
     return render_template('contato_lista.html', context=context)
+
+@app.route('/contato/<int:id>/')
+def contato_detail(id):
+
+    obj = Contato.query.get(id)
+
+    return render_template('contato_detail.html', obj=obj)
 
 
 
