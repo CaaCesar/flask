@@ -1,7 +1,7 @@
 from estudo import app, db
 from flask import render_template, url_for, request, redirect
 from estudo.models import Contato, User, Post
-from estudo.forms import ContatoForm, UserForm, LoginForm, PostForm
+from estudo.forms import ContatoForm, UserForm, LoginForm, PostForm, CommentForm
 from flask_login import login_user, logout_user, current_user
 
 @app.route('/', methods=['GET', 'POST'])
@@ -77,7 +77,14 @@ def contato_detail(id):
 
     return render_template('contato_detail.html', obj=obj)
 
-
+@app.route('/post/<int:id>/', methods=['GET', 'POST'])
+def PostComment(id):
+    post = Post.query.get(id)
+    form = CommentForm()
+    if form.validate_on_submit():
+        form.save(current_user.id, id)
+        return redirect(url_for('PostComment', id=id))
+    return render_template('post.html', post=post, form=form)
 
 # Formato não recomendado de lidar com formulários
 @app.route('/antigo/', methods=['GET', 'POST'])

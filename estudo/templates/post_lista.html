@@ -21,7 +21,7 @@
                     <tr>
                         <td>{{linha.msgresumo()}}</td>
                         <td>{{linha.user.nome}}</td>
-                        <td></td>
+                        <td><a href="{{ url_for('PostComment', id=linha.id)}}">Detalhe</a></td>
                     </tr>
                     {% endfor%}
                 </tbody>
