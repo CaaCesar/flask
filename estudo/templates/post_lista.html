@@ -1,0 +1,31 @@
+{% extends 'base.html'%}
+
+{% block content%}
+    
+<div class="container">
+        {% include 'nav.html'%}
+        <h1>Lista de Posts</h1>
+        
+        <div class="col-12">
+            
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Post</th>
+                        <th>Usuário</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for linha in posts %}
+                    <tr>
+                        <td>{{linha.msgresumo()}}</td>
+                        <td>{{linha.user.nome}}</td>
+                        <td></td>
+                    </tr>
+                    {% endfor%}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
