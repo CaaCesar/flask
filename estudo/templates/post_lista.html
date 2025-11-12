@@ -21,7 +21,7 @@
                     <tr>
                         <td>{{linha.msgresumo()}}</td>
                         <td>{{linha.user.nome}}</td>
-                        <td><a href="{{ url_for('PostComment', id=linha.id)}}">Detalhe</a></td>
+                        <td><a href="{{ url_for('PostComment', id=linha.id)}}"><img src="{{ url_for('static', filename='img/img_seta.png') }}" style="width: 40px;"></a></td>
                     </tr>
                     {% endfor%}
                 </tbody>

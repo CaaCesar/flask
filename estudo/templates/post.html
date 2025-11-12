@@ -16,6 +16,8 @@
                 <h5>Mensagem:</h5>
                 <div class="col-12 border rounded p-4 shadow overflow-auto">
                     {{ post.mensagem }}
+                    <hr>
+                    <img src="{{ url_for('static', filename='data/post/{}'.format(post.imagem) ) }}">
                 </div>
             </div>
             <div class="col-12 mt-3">
