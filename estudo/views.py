@@ -93,29 +93,3 @@ def PostComment(id):
         form.save(current_user.id, id)
         return redirect(url_for('PostComment', id=id))
     return render_template('post.html', post=post, form=form)
-
-# Formato não recomendado de lidar com formulários
-@app.route('/antigo/', methods=['GET', 'POST'])
-def contatoold():
-    context = {}
-    if request.method == 'GET':
-        pesquisa = request.args.get('pesquisa')
-        context.update({'pesquisa': pesquisa})
-        print(f'GET: {pesquisa}')
-    if request.method == 'POST':
-        nome = request.form['nome']
-        email = request.form['email']
-        assunto = request.form['assunto']
-        mensagem = request.form['mensagem']
-
-        contato = Contato(
-            nome=nome,
-            email=email,
-            assunto=assunto,
-            mensagem=mensagem
-        )
-
-        db.session.add(contato)
-        db.session.commit()
-        
-    return render_template('contato_old.html', context=context)
